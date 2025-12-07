@@ -1,0 +1,27 @@
+# Development Dockerfile with hot reload support
+
+FROM golang:1.23-alpine
+
+# Install required packages
+RUN apk add --no-cache \
+    nodejs \
+    npm \
+    yarn \
+    sqlite-dev \
+    gcc \
+    musl-dev \
+    git
+
+# Install air for Go hot reload
+RUN go install github.com/air-verse/air@latest
+
+WORKDIR /app
+
+# Create data directory
+RUN mkdir -p /app/data
+
+EXPOSE 8080 3000
+
+# Default command runs air for hot reload
+CMD ["air", "-c", ".air.toml"]
+

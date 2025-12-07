@@ -1,0 +1,38 @@
+# Secrets
+settings/secrets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+

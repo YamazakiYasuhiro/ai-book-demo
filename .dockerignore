@@ -1,0 +1,44 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.cursor
+.vscode
+.idea
+*.swp
+*.swo
+
+# Documentation
+*.md
+!README.md
+prompts/
+
+# Node modules (will be installed in container)
+frontend/node_modules
+
+# Go build artifacts
+backend/tmp
+backend/*.exe
+backend/*.test
+
+# SQLite database files
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Secrets (mounted at runtime)
+settings/secrets/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+*.out
+
+# Logs
+*.log
+

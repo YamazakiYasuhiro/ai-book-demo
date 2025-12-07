@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persist SQLite database
+      - app_data:/app/data
+      # Mount secrets for development
+      - ./settings/secrets:/app/settings/secrets:ro
+    environment:
+      - DB_PATH=/app/data/app.db
+      - STATIC_DIR=/app/static
+      - SETTINGS_DIR=/app/settings
+    restart: unless-stopped
+
+  # Development service with hot reload
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+      - ./settings:/app/settings:ro
+      - app_data:/app/data
+    environment:
+      - DB_PATH=/app/data/app.db
+      - SETTINGS_DIR=/app/settings
+      - GO_ENV=development
+    profiles:
+      - dev
+
+volumes:
+  app_data:
+
